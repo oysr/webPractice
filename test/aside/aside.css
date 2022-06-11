@@ -1,0 +1,122 @@
+:root {
+    --aside-width: 220px;
+}
+.aside {
+    display: flex;
+    flex-flow: column nowrap;
+    width: var(--aside-width);
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    /*background-color: #3C3F41;*/
+    justify-content: flex-start;
+    align-items: center;
+    align-content: center;
+}
+.aside-header {
+    display: flex;
+    flex-flow: row nowrap;
+    width: 100%;
+    height: 70px;
+    background-color: #ffffff;
+    justify-content: flex-start;
+    align-content: center;
+    align-items: center;
+}
+.aside-body {
+    margin-top: 5px;
+    display: flex;
+    flex: 1;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-content: center;
+    align-items: center;
+    color: #ffffff;
+    overflow-y: auto;
+    overflow-x: hidden;
+    /*border-top-left-radius: 20px;*/
+    /*border-top-right-radius: 20px;*/
+}
+.aside-body::-webkit-scrollbar {
+    display: none;
+}
+/*手风琴效果*/
+.accordion {
+    width: var(--aside-width);
+    /*overflow: hidden;*/
+    /*border-radius: 20px;*/
+}
+.accordion > li {
+    width: 100%;
+}
+.accordion > li input {
+    display: none;  /*清楚input的默认样式*/
+}
+.accordion > li label {
+    position: relative;
+    /*因为label是行内元素，需要变成块元素才能设置宽高*/
+    display: block;
+    width: 100%;
+    background-color: #0665CC;
+    padding: 20px 20px;
+    cursor: pointer;
+    /*去除获取焦点时的闪烁光标*/
+    color: transparent;
+    text-shadow: 0px 0px 0px #fff;
+}
+.accordion > li input:checked ~ label::after {
+    /*用伪元素实现三角形效果*/
+    content: "";
+    width: 30px;
+    height: 15px;
+    background-color: inherit;
+    /*设置位置，前提是要把label的position设置为relative作为参考位置*/
+    position: absolute;
+    right: 50px;
+    bottom: -14px;
+    /*用clip-path将伪元素裁剪成三角形*/
+    clip-path: polygon(0 0, 100% 0, 50% 100%);
+}
+.accordion > li label:hover {
+    background-color: #3f9cff;
+}
+.accordion > li:not(:first-child) label {
+    border-top: 1px solid #0665CC;
+}
+.accordion > li ol {
+    width: 100%;
+    background-color: #2B2B2B;
+}
+.accordion > li ol li {
+    position: relative;
+    width: 100%;
+    /*height: 50px;*/
+    height: 0;
+    line-height: 50px;
+    padding-left: 30px;
+    cursor: pointer;
+    transition: all 0.5s;
+    color: transparent;
+    text-shadow: 0px 0px 0px #fff;
+}
+.accordion > li ol li::before {
+    content: "";
+    position: absolute;
+    top: 3px;
+    left: 0;
+    width: 5px;
+    height: 44px;
+    background-color: #0665CC;
+    transform: scaleY(0); /*在Y轴上缩小，取0直接隐藏该元素*/
+    /*加入过渡效果*/
+    transition: all 0.5s;
+}
+.accordion > li ol li:hover::before {
+    transform: scaleY(1); /*显示该元素*/
+}
+.accordion > li input:checked ~ ol li {
+    height: 50px;
+}
