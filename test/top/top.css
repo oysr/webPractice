@@ -1,0 +1,95 @@
+:root {
+    --top-height: 70px;
+}
+.top {
+    width: 100vw;
+    height: var(--top-height);
+    display: flex;
+    flex-flow: row nowrap;
+    background-color: #2c85df;
+    box-shadow: 0 2px 3px rgba(0,0,0,.5);
+}
+.top-header {
+    width: 220px;
+    height: var(--top-height);
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+}
+.top-content {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-content: center;
+    align-items: center;
+    flex: 1;
+}
+.top-left,
+.top-right {
+    width: 40px;
+    height: var(--top-height);
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    color: transparent;
+    text-shadow: 0 0 0 #fff;
+    cursor: pointer;
+}
+.top-left:hover,
+.top-right:hover {
+    background-color: #0665CC;
+}
+.top-center {
+    flex: 1;
+    height: var(--top-height);
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+}
+.horizontal-list {
+    flex: 1;
+    height: var(--top-height);
+    white-space: nowrap;
+    overflow-y: hidden;
+    list-style: none;
+}
+.li-hidden {
+    display: none;
+}
+.horizontal-list li {
+    float: left;
+    width: calc(100% / 5);
+    height: var(--top-height);
+}
+.horizontal-list li div {
+    height: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+}
+.horizontal-list li div span {
+    position: relative;
+    cursor: pointer;
+    font-size: 24px;
+    color: transparent;
+    text-shadow: 0 0 0 #fff;
+}
+.horizontal-list li div span::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    bottom: -5px;
+    left: 0;
+    background-color: #fff;
+    transform: scaleX(0);
+    transition: all 0.5s
+}
+.horizontal-list li div span:hover::after {
+    transform: scaleX(1);
+}
